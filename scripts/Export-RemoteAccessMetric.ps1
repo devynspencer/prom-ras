@@ -58,3 +58,8 @@ Add-Content @WriteParameters -Value "HELP ras_bytes_total Total bytes transmitte
 Add-Content @WriteParameters -Value "TYPE ras_bytes_total counter"
 Add-Content @WriteParameters -Value "ras_bytes_total $($RasConnectionSummary.TotalBytesInOut)"
 Add-Content @WriteParameters -Value ""
+
+Add-Content @WriteParameters -Value "HELP ras_bytes_received_total Total bytes received since service start"
+Add-Content @WriteParameters -Value "TYPE ras_bytes_received_total counter"
+Add-Content @WriteParameters -Value "ras_bytes_received_total $($RasConnectionSummary.TotalBytesIn)"
+Add-Content @WriteParameters -Value ""
