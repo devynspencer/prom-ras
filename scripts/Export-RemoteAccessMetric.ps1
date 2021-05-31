@@ -22,9 +22,25 @@
     Intended for use in a scheduled task. Requires elevated credentials (for RemoteAccess cmdlets).
 #>
 
+$RasConnectionSummary = Get-RemoteAccessConnectionStatisticsSummary
+
 param (
     [Alias("Path")]
     $ExportPath = "C:\temp\prometheus"
 )
 
 New-Item -Path $ExportPath -Force | Out-Null
+
+$ExportFilePath = Join-Path -Path $ExportPath -ChildPath "ras.prom"
+
+$WriteParameters = @{
+    Path = $ExportFilePath
+    Encoding = "Ascii"
+}
+
+Set-Content @WriteParameters -Value ""
+Add-Content @WriteParameters -Value "HELP ras_connections_total Total connections since service start"
+Add-Content @WriteParameters -Value "TYPE ras_connections_total counter"
+Add-Content @WriteParameters -Value "ras_connections_total $($RasConnectionSummary.TotalCumulativeConnections)"
+Add-Content @WriteParameters -Value ""
+
