@@ -44,3 +44,7 @@ Add-Content @WriteParameters -Value "TYPE ras_connections_total counter"
 Add-Content @WriteParameters -Value "ras_connections_total $($RasConnectionSummary.TotalCumulativeConnections)"
 Add-Content @WriteParameters -Value ""
 
+Add-Content @WriteParameters -Value "HELP ras_concurrent_connections_max Max concurrent connections"
+Add-Content @WriteParameters -Value "TYPE ras_concurrent_connections_max counter"
+Add-Content @WriteParameters -Value "ras_concurrent_connections_max $($RasConnectionSummary.MaxConcurrentConnections)"
+Add-Content @WriteParameters -Value ""
