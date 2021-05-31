@@ -23,6 +23,9 @@
 #>
 
 $RasConnectionSummary = Get-RemoteAccessConnectionStatisticsSummary
+$RasConnections = Get-RemoteAccessConnectionStatistics
+$Ikev2Connections = $RasConnections | ? { $_.TunnelType -eq "Ikev2" }
+$SstpConnections = $RasConnections | ? { $_.TunnelType -eq "Sstp" }
 
 param (
     [Alias("Path")]
@@ -67,4 +70,11 @@ Add-Content @WriteParameters -Value ""
 Add-Content @WriteParameters -Value "HELP ras_bytes_sent_total Total bytes sent since service start"
 Add-Content @WriteParameters -Value "TYPE ras_bytes_sent_total counter"
 Add-Content @WriteParameters -Value "ras_bytes_sent_total $($RasConnectionSummary.TotalBytesIn)"
+Add-Content @WriteParameters -Value ""
+
+Add-Content @WriteParameters -Value "HELP ras_vpn_connections Current established VPN connections"
+Add-Content @WriteParameters -Value "TYPE ras_vpn_connections gauge"
+Add-Content @WriteParameters -Value "ras_vpn_connections{protocol=`"all`"} $($RasConnections.Count)"
+Add-Content @WriteParameters -Value "ras_vpn_connections{protocol=`"ikev2`"} $($Ikev2Connections.Count)"
+Add-Content @WriteParameters -Value "ras_vpn_connections{protocol=`"sstp`"} $($SstpConnections.Count)"
 Add-Content @WriteParameters -Value ""
