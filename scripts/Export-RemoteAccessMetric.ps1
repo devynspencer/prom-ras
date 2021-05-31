@@ -48,3 +48,8 @@ Add-Content @WriteParameters -Value "HELP ras_concurrent_connections_max Max con
 Add-Content @WriteParameters -Value "TYPE ras_concurrent_connections_max counter"
 Add-Content @WriteParameters -Value "ras_concurrent_connections_max $($RasConnectionSummary.MaxConcurrentConnections)"
 Add-Content @WriteParameters -Value ""
+
+Add-Content @WriteParameters -Value "HELP ras_users_total Total unique users since service start"
+Add-Content @WriteParameters -Value "TYPE ras_users_total counter"
+Add-Content @WriteParameters -Value "ras_users_total $($RasConnectionSummary.TotalUniqueUsers)"
+Add-Content @WriteParameters -Value ""
