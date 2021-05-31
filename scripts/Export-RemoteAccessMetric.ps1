@@ -53,3 +53,8 @@ Add-Content @WriteParameters -Value "HELP ras_users_total Total unique users sin
 Add-Content @WriteParameters -Value "TYPE ras_users_total counter"
 Add-Content @WriteParameters -Value "ras_users_total $($RasConnectionSummary.TotalUniqueUsers)"
 Add-Content @WriteParameters -Value ""
+
+Add-Content @WriteParameters -Value "HELP ras_bytes_total Total bytes transmitted since service start"
+Add-Content @WriteParameters -Value "TYPE ras_bytes_total counter"
+Add-Content @WriteParameters -Value "ras_bytes_total $($RasConnectionSummary.TotalBytesInOut)"
+Add-Content @WriteParameters -Value ""
