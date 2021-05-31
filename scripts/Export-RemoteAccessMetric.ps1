@@ -7,6 +7,9 @@
 
     Metrics are collected using the Get-RemoteAccessConnectionStatistics and Get-RemoteAccessConnectionStatisticsSummary cmdlets from the RemoteAccess module.
 
+    .PARAMETER Path
+    Directory path that the metrics will be exported to. Alias of ExportPath for clarity.
+
     .PARAMETER ExportPath
     Directory path that the metrics will be exported to. C:\temp\prometheus is the default.
 
@@ -20,6 +23,7 @@
 #>
 
 param (
+    [Alias("Path")]
     $ExportPath = "C:\temp\prometheus"
 )
 
