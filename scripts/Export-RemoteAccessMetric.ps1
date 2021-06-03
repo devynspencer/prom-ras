@@ -22,6 +22,7 @@
     Intended for use in a scheduled task. Requires elevated credentials (for RemoteAccess cmdlets).
 #>
 
+[CmdletBinding()]
 param (
     [Alias("Path")]
     $ExportPath = "C:\temp\prometheus"
