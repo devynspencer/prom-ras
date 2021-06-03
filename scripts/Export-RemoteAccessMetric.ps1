@@ -33,7 +33,7 @@ $RasConnections = Get-RemoteAccessConnectionStatistics
 $Ikev2Connections = $RasConnections | ? { $_.TunnelType -eq "Ikev2" }
 $SstpConnections = $RasConnections | ? { $_.TunnelType -eq "Sstp" }
 
-New-Item -Path $ExportPath -Force | Out-Null
+New-Item -Path $ExportPath -Force -ItemType Directory | Out-Null
 $ExportFilePath = Join-Path -Path $ExportPath -ChildPath "ras.prom"
 
 $WriteParameters = @{
