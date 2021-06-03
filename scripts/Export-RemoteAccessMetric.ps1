@@ -41,6 +41,8 @@ $WriteParameters = @{
     Encoding = "Ascii"
 }
 
+Write-Verbose -Message "Exporting RRAS server events to $ExportFilePath"
+
 Set-Content @WriteParameters -Value ""
 Add-Content @WriteParameters -Value "HELP ras_connections_total Total connections since service start"
 Add-Content @WriteParameters -Value "TYPE ras_connections_total counter"
