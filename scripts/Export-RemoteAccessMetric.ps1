@@ -11,7 +11,7 @@
     Directory path that the metrics will be exported to. Alias of ExportPath for clarity.
 
     .PARAMETER ExportPath
-    Directory path that the metrics will be exported to. C:\temp\prometheus is the default.
+    Directory path that the metrics will be exported to. "C:\Program Files\windows_exporter\textfile_inputs" (the default ingestion path used by windows_exporter) is the default.
 
     .EXAMPLE
     Export-RemoteAccessMetric.ps1
@@ -25,7 +25,7 @@
 [CmdletBinding()]
 param (
     [Alias("Path")]
-    $ExportPath = "C:\temp\prometheus"
+    $ExportPath = "C:\Program Files\windows_exporter\textfile_inputs"
 )
 
 $RasConnectionSummary = Get-RemoteAccessConnectionStatisticsSummary
