@@ -13,6 +13,7 @@ services:
 
   grafana:
     image: grafana/grafana
+    env_file: .env
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
