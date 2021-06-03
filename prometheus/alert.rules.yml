@@ -1,0 +1,9 @@
+groups:
+  - name: example-basic
+    rules:
+      # Alert for any instance that is unreachable for >2 minutes.
+      - alert: service_down
+        expr: up == 0
+        for: 2m
+        labels:
+          severity: critical
